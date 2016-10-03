@@ -55,20 +55,21 @@
     [alert addAction:ok];
     [self presentViewController:alert animated:YES completion:nil];
     
+    
 }
 
 - (IBAction)loginButtonAction:(id)sender {
     
 
-    
        NSString *email=self.emailTextField.text;
        NSString *password=self.passwordTextField.text;
        
        if (email.length > 0) {
            
            if (password.length > 0) {
+               
                [[FIRAuth auth]signInWithEmail:email password:password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
-                   
+               
                    if(error!=nil)
                    {
                        NSLog(@"%@",error.localizedDescription);
@@ -85,6 +86,7 @@
                            
                        }
                        
+               
                    }
                }];
            }
@@ -109,8 +111,6 @@
            [self presentViewController:alertForEmptyField animated:YES completion:nil];
        }
        
-       
-    
+       }
 
-}
 @end
