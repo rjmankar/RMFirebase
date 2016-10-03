@@ -34,4 +34,47 @@
 }
 */
 
+- (IBAction)signOutAction:(id)sender {
+    
+    
+    
+    NSError *error;
+    [[FIRAuth auth] signOut:&error];
+    if (!error) {
+        // Sign-out succeeded
+        NSLog(@"successfully logged off");
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"OUT" message:@"signout Successfuly" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok=[UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            ViewController *goBack=[self.storyboard instantiateViewControllerWithIdentifier:@"mainScreen"];
+            
+            [self.navigationController pushViewController:goBack animated:YES];
+        }];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        
+    }
+    
+}
+
+
+
+-(void)whoIsCurrentlySignedIn{
+    
+    FIRUser *user = [FIRAuth auth].currentUser;
+    
+    if (user != nil) {
+        // User is signed in.
+        
+        
+        
+        
+    } else {
+        // No user is signed in.
+    }
+    
+    
+    
+}
 @end

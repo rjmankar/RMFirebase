@@ -11,4 +11,10 @@
 
 @interface EnterInViewController : UIViewController
 
+
+- (IBAction)signOutAction:(id)sender;
+
+
+
+
 @end
